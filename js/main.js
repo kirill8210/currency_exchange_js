@@ -4,7 +4,6 @@ REST API https://bank.gov.ua/ua/open-data/api-dev
 Приложение будет иметь несколько страниц.
 
 Первая, текущий курс гривны по отношению к иностранным валютам
-
 Вторая, таблица и график изменения курса гривны к выбранной через select валюте
 
 Для интерфейса можно выбрать любую библиотеку на свой вкус
@@ -15,9 +14,8 @@ https://react-bootstrap.github.io/
 https://material-ui.com/
 
  */
-
-const app = document.querySelector('.app');
-const select = document.querySelector('.app_select');
+const currencyList = document.querySelector('.currency_list');
+const selectCurrency = document.querySelector('.currency_search_list');
 
 const oneExchange = (data) => {
     const {
@@ -42,7 +40,7 @@ const getData = () =>{
             const myRates = ['USD', 'GBP', 'EUR', 'PLN'];
             const options = data.filter(data => myRates.includes(data.cc));
             const cards = options.map(oneExchange);
-            app.append(...cards);
+            currencyList.append(...cards);
         });
 };
 getData();
@@ -55,13 +53,13 @@ const optionsData = (value) =>{
             const myRates = value;
             const options = data.filter(data => myRates.includes(data.cc));
             const cards = options.map(oneExchange);
-            select.append(...cards);
+            selectCurrency.append(...cards);
         });
 };
 
-const element = document.getElementById('search_choices');
-element.addEventListener('change', (e) => {
-    select.textContent = '';
+const currencySearch = document.getElementById('currency_search');
+currencySearch.addEventListener('change', (e) => {
+    selectCurrency.textContent = '';
     const value = e.target.value;
     optionsData(value);
 });
