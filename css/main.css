@@ -1,1 +1,32 @@
+.currency_hidden{
+    display: none;
+}
+
+#currency_search{
+    margin-bottom: 15px;
+}
+
+.currency_table{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: 1px solid #999;
+}
+
+.table_row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table_column2{
+    width: 100%;
+    border: 1px solid #999;
+}
+
+.table_column{
+    display: flex;
+    justify-content: center;
+    padding: 10px 25px;
+}
+
 

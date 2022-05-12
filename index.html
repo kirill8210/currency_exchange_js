@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -21,15 +22,18 @@
         </div>
     </div>
     <div class="currency_select">
-        <div class="container">
+        <div class="container selectBox">
             <select name="currency" id="currency_search">
                 <option value="">Выберите валюту</option>
-                <option value="USD">Доллар США</option>
-                <option value="GBP">Фунт стерлінгів</option>
-                <option value="EUR">Євро</option>
-                <option value="PLN">Злотий</option>
+                <option value="25">Доллар США</option>
+                <option value="24">Фунт стерлінгів</option>
+                <option value="32">Євро</option>
+                <option value="33">Злотий</option>
             </select>
-            <div class="currency_search_list"></div>
+            <div class="currency_table"></div>
+            <div class="currency_chart">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
 </main>
