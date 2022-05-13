@@ -15,24 +15,30 @@
 </head>
 <body>
 <main>
-    <div class="currency">
-        <div class="container">
+    <div class="container">
+        <div class="currency">
             <h1>Currency Exchange App</h1>
+            <h2>Currency Exchange Now</h2>
             <div class="currency_list"></div>
         </div>
     </div>
-    <div class="currency_select">
-        <div class="container selectBox">
-            <select name="currency" id="currency_search">
-                <option value="">Выберите валюту</option>
-                <option value="25">Доллар США</option>
-                <option value="24">Фунт стерлінгів</option>
-                <option value="32">Євро</option>
-                <option value="33">Злотий</option>
-            </select>
-            <div class="currency_table"></div>
-            <div class="currency_chart">
-                <canvas id="myChart"></canvas>
+</main>
+<main>
+    <div class="container">
+        <h2>Currency Exchange Last 7 Days</h2>
+        <div class="currency_select">
+            <div class="selectBox">
+                <select name="currency" id="currency_search">
+                    <option value="">Select currency</option>
+                    <option value="25">Доллар США</option>
+                    <option value="24">Фунт стерлінгів</option>
+                    <option value="32">Євро</option>
+                    <option value="33">Злотий</option>
+                </select>
+                <div class="currency_table"></div>
+                <div class="currency_chart">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </div>

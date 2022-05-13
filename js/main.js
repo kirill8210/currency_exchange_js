@@ -31,11 +31,13 @@ const oneExchange = (data) => {
         rate
     } = data;
     const card = document.createElement('div');
+    // card.classList.add('list');
 
-    card.insertAdjacentHTML('afterbegin', `    
-        <div>
-            <div><span>${cc}</span> ${Math.round(rate*100)/100}</div>
-        </div>    
+    card.insertAdjacentHTML('afterbegin', `
+        <div class="list_item">
+            <span>${cc}</span>
+            <span>${Math.round(rate*100)/100}</span>
+        </div>            
     `);
 
     return card;
@@ -138,10 +140,10 @@ const myChart = new Chart(ctx, {
             label: '',
             data: [12, 19, 3, 5, 2, 3, 8],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)'
+                'rgba(255, 99, 132, .5)'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)'
+                '#cba8ff'
             ]
         }]
     },
