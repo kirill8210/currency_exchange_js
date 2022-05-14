@@ -140,10 +140,10 @@ const myChart = new Chart(ctx, {
             label: '',
             data: [12, 19, 3, 5, 2, 3, 8],
             backgroundColor: [
-                'rgba(255, 99, 132, .5)'
+                '#dfcbfb'
             ],
             borderColor: [
-                '#cba8ff'
+                '#964fff'
             ]
         }]
     },

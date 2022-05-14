@@ -1,5 +1,5 @@
 body{
-    background: #cba8ff;
+    background: #e5d3ff;
 }
 
 h1{
@@ -23,13 +23,13 @@ h2{
     justify-content: space-between;
     border: 1px solid #423453;
     padding: 10px 15px;
-    background: #d5fcff;
+    background: #f3feff;
     color: #212121;
 }
 
 select{
     padding: 10px;
-    background: #d5fcff;
+    background: #f3feff;
     border: 2px solid #423453;
 }
 
@@ -56,7 +56,7 @@ select{
 .table_column2{
     width: 100%;
     border: 1px solid #423453;
-    background: #d5fcff;
+    background: #f3feff;
 }
 
 .table_column{
@@ -67,6 +67,6 @@ select{
 
 .currency_chart{
     margin: 25px 50px;
-    background: #d5fcff;
+    background: #f3feff;
 }
 
