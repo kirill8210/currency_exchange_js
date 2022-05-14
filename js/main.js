@@ -139,14 +139,14 @@ function listItemTemplate({name, date} = {}) {
     div.classList.add('table_row');
 
     const tableDate = document.createElement('div');
-    tableDate.classList.add('table_column2');
+    tableDate.classList.add('table_column_block');
 
     const rowData = document.createElement('div');
     rowData.classList.add('table_column');
     rowData.textContent = date;
 
     const tableRate = document.createElement('div');
-    tableRate.classList.add('table_column2');
+    tableRate.classList.add('table_column_block');
 
     const rowRate = document.createElement('div');
     rowRate.classList.add('table_column');

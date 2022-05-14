@@ -53,7 +53,7 @@ select{
     align-items: center;
 }
 
-.table_column2{
+.table_column_block{
     width: 100%;
     border: 1px solid #423453;
     background: #f3feff;
