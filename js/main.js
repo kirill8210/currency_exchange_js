@@ -1,19 +1,3 @@
-/*
-Дополнительное тестовое: разработать приложение на React
-REST API https://bank.gov.ua/ua/open-data/api-dev
-Приложение будет иметь несколько страниц.
-
-Первая, текущий курс гривны по отношению к иностранным валютам
-Вторая, таблица и график изменения курса гривны к выбранной через select валюте
-
-Для интерфейса можно выбрать любую библиотеку на свой вкус
-Либо что-то из
-https://react.semantic-ui.com/
-https://blueprintjs.com/
-https://react-bootstrap.github.io/
-https://material-ui.com/
-
- */
 const currencyList = document.querySelector('.currency_list');
 const currencySearch = document.getElementById('currency_search');
 const currencyChart = document.querySelector('.currency_chart');
@@ -22,41 +6,6 @@ const currencyTable = document.querySelector('.currency_table');
 currencyTable.classList.add('currency_hidden');
 currencyTable.style.border = '0px';
 let result = [];
-
-currencySearch.addEventListener('change', updateChart);
-
-const oneExchange = (data) => {
-    const {
-        cc,
-        rate
-    } = data;
-    const card = document.createElement('div');
-    // card.classList.add('list');
-
-    card.insertAdjacentHTML('afterbegin', `
-        <div class="list_item">
-            <span>${cc}</span>
-            <span>${Math.round(rate*100)/100}</span>
-        </div>            
-    `);
-
-    return card;
-};
-
-const getData = () =>{
-    fetch(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json`)
-        .then(res => res.json())
-        .then(data =>{
-            //console.log(data)
-            const myRates = ['USD', 'GBP', 'EUR', 'PLN'];
-            const options = data.filter(data => myRates.includes(data.cc));
-            const cards = options.map(oneExchange);
-            currencyList.append(...cards);
-        });
-};
-getData();
-
-
 let now = new Date();
 let time = now.getTime();
 now = new Date(time - (time % 86400000));
@@ -70,6 +19,41 @@ for (let i = 0; i < 8; i++, now.setDate(now.getDate() - 1)) {
 
 const rates = lastDays.splice(1, 7).reverse();
 const ratesTable = tableDays.splice(1, 7).reverse();
+const ratesNow = now.getFullYear() + '' + ((now.getMonth() + 1) < 10 ? '0' + (now.getMonth() + 1) : (now.getMonth() + 1)) + '' + ((now.getDate() + 8)  < 10 ? '0' + (now.getDate() + 8) : (now.getDate() + 8) );
+
+currencySearch.addEventListener('change', updateChart);
+
+const oneExchange = (data) => {
+    const {
+        cc,
+        rate
+    } = data;
+    const card = document.createElement('div');
+
+    card.insertAdjacentHTML('afterbegin', `
+        <div class="list_item">
+            <span>${cc}</span>
+            <span>${Math.round(rate*100)/100}</span>            
+        </div>            
+    `);
+
+    return card;
+};
+
+const getData = () =>{
+    fetch(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=${ratesNow}&json`)
+        .then(res => res.json())
+        .then(data =>{
+            const myRates = ['USD', 'GBP', 'EUR', 'PLN'];
+            const options = data.filter(data => myRates.includes(data.cc));
+            const cards = options.map(oneExchange);
+            currencyList.append(...cards);
+        });
+};
+getData();
+
+
+
 
 const rateData = (value) => {
 
@@ -99,7 +83,6 @@ const rateData = (value) => {
                 ];
 
             }, []);
-            console.log(arr3);
 
             const fragment = document.createDocumentFragment();
             arr3.forEach(arr3 => {
