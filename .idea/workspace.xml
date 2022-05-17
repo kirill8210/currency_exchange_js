@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="715ccb03-3914-4e73-936f-eda3b4b010c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/preload.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Denis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Denis.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +18,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="28sMWdP4RWFMEdLSC1zJrcI376B" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -47,7 +54,8 @@
       <workItem from="1652251929619" duration="28524000" />
       <workItem from="1652369285384" duration="8484000" />
       <workItem from="1652433386728" duration="3693000" />
-      <workItem from="1652515592094" duration="3975000" />
+      <workItem from="1652515592094" duration="4211000" />
+      <workItem from="1652790386768" duration="6272000" />
     </task>
     <servers />
   </component>

@@ -4,8 +4,7 @@ const currencyChart = document.querySelector('.currency_chart');
 currencyChart.classList.add('currency_hidden');
 const currencyTable = document.querySelector('.currency_table');
 currencyTable.classList.add('currency_hidden');
-currencyTable.style.border = '0px';
-let result = [];
+
 let now = new Date();
 let time = now.getTime();
 now = new Date(time - (time % 86400000));
@@ -41,19 +40,22 @@ const oneExchange = (data) => {
 };
 
 const getData = () =>{
+    const div = document.createElement('div');
+    div.classList.add('preload');
+    currencyList.append(div);
+
     fetch(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=${ratesNow}&json`)
         .then(res => res.json())
         .then(data =>{
             const myRates = ['USD', 'GBP', 'EUR', 'PLN'];
             const options = data.filter(data => myRates.includes(data.cc));
             const cards = options.map(oneExchange);
+            currencyList.textContent = '';
+            currencyList.style.border = '1px solid #423453';
             currencyList.append(...cards);
         });
 };
 getData();
-
-
-
 
 const rateData = (value) => {
 
@@ -64,20 +66,11 @@ const rateData = (value) => {
 
     ratesByDates.then(
         data => {
-            for (let i = 0; i < data.length; i++) {
-                result.push(data[i][value].rate);
-            }
-
-            const label = currencySearch.options[currencySearch.selectedIndex].text;
-            myChart.data.datasets[0].label = label;
-            myChart.data.datasets[0].data = result;
-            myChart.update();
-
-            const arr3 = data.reduce((acc, el, i) => {
+            const arrayCurrency = data.reduce((acc, el, i) => {
                 return [
                     ...acc,
                     {
-                        name: data[i][value].rate,
+                        rate: data[i][value].rate,
                         date: data[i][value].exchangedate,
                     },
                 ];
@@ -85,16 +78,24 @@ const rateData = (value) => {
             }, []);
 
             const fragment = document.createDocumentFragment();
-            arr3.forEach(arr3 => {
-                const div = listItemTemplate(arr3);
+            arrayCurrency.forEach(array => {
+                const div = listItemTemplate(array);
                 fragment.appendChild(div);
             });
-
             currencyTable.appendChild(fragment);
 
+            // for (let i = 0; i < data.length; i++) {
+            //     result.push(data[i][value].rate);
+            // }
+
+            const result = arrayCurrency.map(el => el.rate);
+
+            const label = currencySearch.options[currencySearch.selectedIndex].text;
+            myChart.data.datasets[0].label = label;
+            myChart.data.datasets[0].data = result;
+            myChart.update();
         }
     );
-
 };
 
 function updateChart() {
@@ -105,7 +106,6 @@ function updateChart() {
         currencyTable.classList.remove('currency_hidden');
         currencyTable.style.border = '1px solid #999';
         currencyChart.classList.remove('currency_hidden');
-        result = [];
     } else {
         currencyTable.textContent = '';
         currencyTable.style.border = '0';
@@ -121,7 +121,7 @@ const myChart = new Chart(ctx, {
         labels: ratesTable,
         datasets: [{
             label: '',
-            data: [12, 19, 3, 5, 2, 3, 8],
+            data: '',
             backgroundColor: [
                 '#dfcbfb'
             ],
@@ -133,7 +133,7 @@ const myChart = new Chart(ctx, {
     options: {}
 });
 
-function listItemTemplate({name, date} = {}) {
+function listItemTemplate({rate, date} = {}) {
 
     const div = document.createElement('div');
     div.classList.add('table_row');
@@ -150,7 +150,7 @@ function listItemTemplate({name, date} = {}) {
 
     const rowRate = document.createElement('div');
     rowRate.classList.add('table_column');
-    rowRate.textContent = name;
+    rowRate.textContent = rate;
 
     tableRate.append(rowRate);
     tableDate.append(rowData);

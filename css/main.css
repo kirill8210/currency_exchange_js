@@ -15,7 +15,7 @@ h2{
 .currency_list{
     width: 150px;
     margin: 20px 0;
-    border: 1px solid #423453;
+    border: none;
 }
 
 .list_item{
@@ -44,7 +44,7 @@ select{
 .currency_table{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border: 1px solid #423453;
+    border: none;
 }
 
 .table_row{
@@ -70,3 +70,18 @@ select{
     background: #f3feff;
 }
 
+.preload{
+    background-image: url('../img/preload.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+    animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+    to{
+        transform: rotate(-360deg);
+    }
+}
